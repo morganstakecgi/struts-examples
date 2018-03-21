@@ -44,7 +44,6 @@ jobs:
     params:
      file: targets/*.war
 
-
 - name: cf-push-struts-app
   max_in_flight: 1
   plan:
