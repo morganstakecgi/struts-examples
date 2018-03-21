@@ -21,3 +21,5 @@ nb-configuration.xml
 target
 
 .java-version
+
+morgan-params.yml
