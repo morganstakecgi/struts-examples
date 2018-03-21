@@ -16,7 +16,6 @@ nb-configuration.xml
 .DS_Store
 
 # Scripts
-*.sh
 
 # Maven
 target
