@@ -13,7 +13,7 @@ resources:
     uri: https://github.com/morganstakecgi/struts-examples.git
     private_key: ((github_private_key))
 
-# s3 for struts-app app
+# s3 for struts-apps
 - name: struts-app-build-artifacts
   type: s3
   source:
@@ -23,7 +23,7 @@ resources:
     region_name: ((AWS_REGION_NAME))
     endpoint: ((S3_ENDPOINT))
     bucket: ((S3_BUCKET))
-    regexp: (.*).war
+    regexp: target/(.*).war
 # 
 - name: slack-alert
   type: slack-notification
@@ -39,30 +39,21 @@ jobs:
     trigger: true
   - task: compile
     file: struts-examples/ci/tasks/struts-app/compile/task.yml
-
-- name: unit-test-struts-app
-  max_in_flight: 1
-  plan:
-  - get: struts-examples
-    passed: [compile-struts-app]
-    trigger: true
-  - task: unit-test
-    file: struts-examples/ci/tasks/struts-app/unit-test/task.yml
-    attempts: 1
   - put: build-artifacts
     resource: struts-app-build-artifacts
     params:
      file: targets/*.war
 
+
 - name: cf-push-struts-app
   max_in_flight: 1
   plan:
   - get: struts-examples
-    passed: [unit-test-struts-app]
+    passed: [compile-struts-app]
     trigger: true
   - get: build-artifacts
     resource: struts-app-build-artifacts
-    passed: [unit-test-struts-app]
+    passed: [compile-struts-app]
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
     attempts: 1
