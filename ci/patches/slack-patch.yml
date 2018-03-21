@@ -1,0 +1,89 @@
+
+# add slack alert to struts app jobs
+# Add alert to struts app compile job
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/0:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME started    
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/2/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/2/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME aborted
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/2/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME successful
+# Add alert to struts app unit test job
+- type: replace
+  path: /jobs/name=unit-test-struts-app/plan/0:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME started    
+- type: replace
+  path: /jobs/name=unit-test-struts-app/plan/2/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed
+- type: replace
+  path: /jobs/name=unit-test-struts-app/plan/2/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME aborted
+- type: replace
+  path: /jobs/name=unit-test-struts-app/plan/3:after
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME successful
+# Add alert to struts app cf push job
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/0:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME started    
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/3/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/3/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME aborted    
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/3/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME successful

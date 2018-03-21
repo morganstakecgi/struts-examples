@@ -1,0 +1,45 @@
+github_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEA4SZ3vxWsPFhAmO92Q7Kpu8gTvYS/ZtW6Xh6044iLY1OiohqT
+      G4PZH/TMz7Xi9ixPWnGWLOoxzbVjMQNPVoFd9z5mjinX6ExgvzfsJEYmTa8xcI2E
+      IKP53+HQdfo9wvBy434bRgswrgbI/mgHt8BVhHHkfS3HN8MpLiVsYRVamt39kRiq
+      IKuSCFeWHdq0bafd+2ABzjxwnXcjLLGhfipo/YVDmzTNJ6PaYaSVgAF5CMb5cAqc
+      1y0A+dS61QbwUNTU7drGmguHf3vrk/Ufo7AMpNw0Ida1KuM8hZXXk2xZ88I14uUC
+      4cOyf+Sye5jEd5JQgEIgrZegEqXSVLk1a+ojgwIDAQABAoIBAGKqqO9kYAZR5n0e
+      84TXVuqj04LKGdbG8tUsP7k2rV7p1+uSGcWFEjGe5eJgowWehWftPxKPzyOGyeFA
+      whP2vWcMQYUrcSKr1fn2V9XNqBuDGvdoDO8A7Q/ftar97vLuzGpFaU5YuQyKjKpw
+      jHFKKC/SeX8iAJu/OtyuKcChywLyUu5EytkAc/8jyjIafkCH+t6qsFcihUILVJfH
+      zGK2NOyij8n/dm5Ccrk1Bpi+psmEFUYXXnMB6lCR8bHTiDFjaNqYB8xK+uQ6RA2A
+      9ZpsLwz0Ia5Qr0CLbzqH13ZKuWo/ZehyxtQJBQu1w0RHwq9RfXhCC6dZL6nLHRwM
+      gX5Ey4ECgYEA/E4VuuXBUobax2HvmdgRSZCIRwUbLZvGdM9+7LKri5b45WTHHJN6
+      1m5J8ykFWS//uopcS2LouN5wssUBF+viT26plrtPKfKLVJXXADN6x7pl74FVhD0I
+      WOgAW+nbqU8rw5+N5DBBFyIeJXF42IVn7VcQVOxL2OX/bWhZp2Ui8m8CgYEA5HKT
+      wOYZVsGYrXORrc+UDbnyQ/fiHSwK5j4jsbTLz4qQZKk+MasvbKvVSaapaO/tnu5p
+      G5g0DArhX3Q8qf/ev7Pz+32WgezgQew+5bgSYsjGkwuXCI6iIQfqCboW5YKQ4gGE
+      DRcyzWIZtOIX33mdptFYjaHgd2yW7g7xnjBd2i0CgYA+qdIh0jB6o72wqXVN22kn
+      wTrnkLAYWskmd+aJOTL7/2of5zDAuyxWF5xMRVLrvM0h8n1Lx+wPBkgtTlqgK1jQ
+      66Y5JppZy8CpKHH2vdJvyq7IlnG730C0fCKisWl6Goy/EGC4XPe9nB6qpA0kkbWn
+      L+mBfhK0cyNGdBVYSvksBwKBgG4ZLk58Vt/yA8Qse5w5+4+1+yV4tRf8HvCiKA/A
+      I63NiROKYXgMmZmVIwEQ+nqhj3LWUf/Dlenr4Hxhh88iitb3QnIFL+FEKTx8QD/0
+      O6AyRUme/1ZXb5ndt5Sig+Bu0aaqtlqcwJYtXlhH0tuYQDuijzwLNSQ5SHBI8Xec
+      tc6tAoGBAO7QnbeQR2+eg3Mgb+g16IGebJLPkzBL9/Y8BIWQzqQ9QvjC6qi6zLGA
+      sTng4Y8Sc+8jGAABpPneINVTXAIPU/iLb1Mp2yd9xuhEgz+hJIgUh9Bd17kzZnIK
+      DaOlkj4qhTXOPzUbaFrTvv/Ki9bs2PMfBCxxXU/DhV+A736xG6LV
+      -----END RSA PRIVATE KEY-----
+# s3 parameters to store build artifacts
+AWS_REGION_NAME: us-west-1
+S3_ENDPOINT: https://s3.us-west-1.amazonaws.com
+AWS_ACCESS_KEY: AKIAJ5GX4HDHYL7CFLAA
+AWS_SECRET_KEY: tJuo527Hv0/rJ+952jRq9PAflh7AGie4dupUZZnS
+S3_BUCKET: struts-examples-build-artifacts
+
+#cf parameters
+CF_API: "https://system.lab04.den.ecsteam.io"
+CF_API_USER: morgan.stake@cgi.com
+CF_API_PASSWORD: G33kzilla
+APPS_DOMAIN_NAME: apps.lab04.den.ecsteam.io
+
+# struts-examples apps parameters
+STRUTS_APP_INSTANCE_COUNT: 1
+STRUTS_APP_NAME: struts_examples
+STRUTS_APP_SERVICES:

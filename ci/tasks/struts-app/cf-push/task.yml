@@ -1,0 +1,19 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: cnsadmin/vw-maven
+    tag: latest
+inputs:
+- name: struts-examples
+- name: build-artifacts
+run:
+  path: struts-examples/ci/tasks/struts-app/cf-push/task.sh
+params:
+  CF_API:
+  CF_API_USER:
+  CF_API_PASSWORD:
+  APPS_DOMAIN_NAME:
+  STRUTS_APP_INSTANCE_COUNT:
+  STRUTS_APP_NAME:
