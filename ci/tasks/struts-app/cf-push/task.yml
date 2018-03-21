@@ -3,7 +3,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: cnsadmin/vw-maven
+    repository: cnsadmin/struts-example
     tag: latest
 inputs:
 - name: struts-examples

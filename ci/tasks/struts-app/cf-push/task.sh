@@ -1,12 +1,19 @@
 #!/bin/bash
 
-DEPLOY_FILE_NAME=$(readlink -f build-artifacts/$STRUTS_APP_NAME*.war)
+DEPLOY_FILE_NAME=$(readlink -f build-artifacts/*.war)
 
 cf login -a $CF_API -u $CF_API_USER -p $CF_API_PASSWORD
-echo " Got here. do some more magic"
+echo " Got here. do some more magic with\n " $DEPLOY_FILE_NAME
+ls -R
 
 
-
+#if [ $? ]
+#then
+#  for i in `find . -name "*.war"|sort|grep -v test|grep -v mailreader`
+#  do
+#    cf push -m750m `dirname $i|cut -d'/' -f2` -p $i
+#  done
+#fi
 #
 #
 #

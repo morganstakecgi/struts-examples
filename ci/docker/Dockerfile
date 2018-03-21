@@ -58,6 +58,8 @@ RUN mv cf /usr/local/bin
 RUN rm cf.tgz
 
 
+# Install aws cli
+RUN apt-get install awscli -y
 
 #
 ## Install jmeter for load test

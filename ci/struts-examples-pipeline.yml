@@ -23,7 +23,7 @@ resources:
     region_name: ((AWS_REGION_NAME))
     endpoint: ((S3_ENDPOINT))
     bucket: ((S3_BUCKET))
-    regexp: target/(.*).war
+    regexp: (.*).war
 # 
 - name: slack-alert
   type: slack-notification
@@ -39,10 +39,6 @@ jobs:
     trigger: true
   - task: compile
     file: struts-examples/ci/tasks/struts-app/compile/task.yml
-  - put: build-artifacts
-    resource: struts-app-build-artifacts
-    params:
-     file: targets/*.war
 
 - name: cf-push-struts-app
   max_in_flight: 1
