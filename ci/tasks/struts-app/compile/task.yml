@@ -8,4 +8,4 @@ image_resource:
 inputs:
 - name: struts-examples
 run:
-  path: struts-examples/ci/struts-app/tasks/compile/task.sh
+  path: struts-examples/ci/tasks/struts-app/compile/task.sh
