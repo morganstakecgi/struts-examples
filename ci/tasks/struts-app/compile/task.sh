@@ -12,15 +12,17 @@
 #echo "[default]" > ~/.aws/config
 #echo "region = ${AWS_REGION_NAME}" >> ~/.aws/config
 #echo "output = json" >> ~/.aws/config
+mkdir -p build_artifacts
 
 cd struts-examples
 mvn package -pl annotations -am
-#
-#if [ $? ]
-#then
-#  for i in `find . -name "*.war"|sort|grep -v test|grep -v mailreader`
-#  do
+
+if [ $? ]
+then
+  for i in `find . -name "*.war"|sort|grep -v test|grep -v mailreader`
+  do
 #    echo aws s3 cp $i s3://${S3_BUCKET}/`dirname $i|cut -d'/' -f2`.war
 #    aws s3 cp $i s3://${S3_BUCKET}/`dirname $i|cut -d'/' -f2`.war
-#  done
-#fi
+      cp $i build_artifacts/`dirname $i|cut -d'/' -f2`.war
+  done
+fi

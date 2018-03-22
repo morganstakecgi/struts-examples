@@ -47,7 +47,7 @@ jobs:
       S3_BUCKET: ((S3_BUCKET))
   - put: struts-app-build-artifacts
     params:
-     file: struts-examples/*/target/*.war
+     file: build_artifacts/*.war
 
 - name: cf-push-struts-app
   max_in_flight: 1

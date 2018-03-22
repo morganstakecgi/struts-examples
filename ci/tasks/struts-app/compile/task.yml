@@ -7,6 +7,8 @@ image_resource:
     tag: latest
 inputs:
 - name: struts-examples
+outputs:
+- name: build_artifacts
 run:
   path: struts-examples/ci/tasks/struts-app/compile/task.sh
 params:
