@@ -5,8 +5,10 @@ cd struts-examples
 
 if [[ -z ${STRUTS_PROJECTS} ]]
 then
+  echo " \$STRUTS_PROJECTS is empty. Building Everything!"
   mvn package
 else
+  echo "Building the following modules: ${STRUTS_PROJECTS}"
   for i in $STRUTS_PROJECTS
   do
     mvn package -pl "$i" -am;
