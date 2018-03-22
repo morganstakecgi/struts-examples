@@ -14,12 +14,12 @@ printf "%$width.${width}s\n" "$divider"
 
 echo "Deploying: "
 printf "%$width.${width}s\n" "$divider"
-printf "| %-30s \t|  %-69s \n" "App" "War File"
+printf "| %-25s \t|  %-70s \n" "App" "War File"
 printf "%$width.${width}s\n" "$divider"
 
 for i in $DEPLOY_FILE_NAMES
 do
-  printf "| %-25s \t|  using %-60s \n" `basename $i .war` $i
+  printf "| %-25s \t|  %-60s \n" `basename $i .war` $i
 done
 printf "%$width.${width}s\n" "$divider"
 
