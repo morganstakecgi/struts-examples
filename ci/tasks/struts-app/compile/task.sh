@@ -7,7 +7,7 @@ if [[ -z ${STRUTS_PROJECTS} ]]
 then
   mvn package
 else
-  for i in STRUTS_PROJECTS
+  for i in $STRUTS_PROJECTS
   do
     mvn package -pl "$i" -am;
   done

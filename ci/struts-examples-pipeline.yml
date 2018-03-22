@@ -40,7 +40,7 @@ jobs:
   - task: compile
     file: struts-examples/ci/tasks/struts-app/compile/task.yml
     params:
-      STRUTS_PROJECTS: ((STRUTS_PROJECTS)
+      STRUTS_PROJECTS: "((STRUTS_PROJECTS))"
   - put: struts-app-build-artifacts
     params:
      file: build_artifacts/*.tar.gz
