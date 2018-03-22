@@ -13,8 +13,6 @@
 #echo "region = ${AWS_REGION_NAME}" >> ~/.aws/config
 #echo "output = json" >> ~/.aws/config
 
-cat ~/.aws/*
-
 cd struts-examples
 mvn package -pl annotations -am
 #
