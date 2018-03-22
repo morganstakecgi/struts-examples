@@ -12,7 +12,11 @@ echo "aws_secret_access_key = ${AWS_SECRET_KEY}" >> ~/.aws/credentials
 echo "[default]" > ~/.aws/config
 echo "region = ${AWS_REGION_NAME}" >> ~/.aws/config
 echo "output = json" >> ~/.aws/config
+echo "=================================================================="
+env  | sort
+echo "=================================================================="
 
+cat ~/.aws/*
 
 cd struts-examples
 mvn package -pl annotations -am
