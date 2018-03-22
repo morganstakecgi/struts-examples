@@ -2,8 +2,16 @@
 
 mkdir -p build_artifacts
 cd struts-examples
-#mvn package -pl annotations -am
-mvn package
+
+if [[ -z ${STRUTS_PROJECTS} ]]
+then
+  mvn package
+else
+  for i in STRUTS_PROJECTS
+  do
+    mvn package -pl "$i" -am;
+  done
+fi
 
 if [ $? ]
 then
