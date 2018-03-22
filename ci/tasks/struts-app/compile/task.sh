@@ -10,7 +10,7 @@ then
 else
   echo "==========================================="
   echo "Building the following modules: "
-  for i in STRUTS_PROJECTS
+  for i in $STRUTS_PROJECTS
   do
     echo $i
   done
