@@ -12,3 +12,6 @@ then
       cp $i ../build_artifacts/`dirname $i|cut -d'/' -f2`.war
   done
 fi
+
+TAR_FILE=struts-examples.tar.gz
+tar -zcvf $TAR_FILE `find ../build_artifacts -name *.war` && mv $TAR_FILE ../build_artifacts/

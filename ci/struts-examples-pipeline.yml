@@ -23,7 +23,7 @@ resources:
     region_name: ((AWS_REGION_NAME))
     endpoint: ((S3_ENDPOINT))
     bucket: ((S3_BUCKET))
-    regexp: (.*).war
+    regexp: (.*).tar.gz
 
 - name: slack-alert
   type: slack-notification
