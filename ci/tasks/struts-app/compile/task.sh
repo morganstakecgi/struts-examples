@@ -21,6 +21,7 @@ if [ $? ]
 then
   for i in `find . -name "*.war"|sort|grep -v test|grep -v mailreader`
   do
+    echo aws s3 cp $i s3://${S3_BUCKET}/`dirname $i|cut -d'/' -f2`.war
     aws s3 cp $i s3://${S3_BUCKET}/`dirname $i|cut -d'/' -f2`.war
   done
 fi
