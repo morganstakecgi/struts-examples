@@ -67,21 +67,21 @@
       channel: '@morgan.stake'
       text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME started    
 - type: replace
-  path: /jobs/name=cf-push-struts-app/plan/2/on_failure?
+  path: /jobs/name=cf-push-struts-app/plan/3/on_failure?
   value:
     put: slack-alert
     params:
       channel: '@morgan.stake'
       text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed
 - type: replace
-  path: /jobs/name=cf-push-struts-app/plan/2/on_abort?
+  path: /jobs/name=cf-push-struts-app/plan/3/on_abort?
   value:
     put: slack-alert
     params:
       channel: '@morgan.stake'
       text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME aborted    
 - type: replace
-  path: /jobs/name=cf-push-struts-app/plan/2/on_success?
+  path: /jobs/name=cf-push-struts-app/plan/3/on_success?
   value:
     put: slack-alert
     params:
