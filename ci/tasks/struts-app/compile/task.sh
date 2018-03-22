@@ -3,7 +3,7 @@
 mkdir -p build_artifacts
 cd struts-examples
 
-if [[ -z ${STRUTS_PROJECTS} ]]
+if [[ -z ${STRUTS_PROJECTS// } ]]
 then
   echo " \$STRUTS_PROJECTS is empty. Building Everything!"
   mvn package
