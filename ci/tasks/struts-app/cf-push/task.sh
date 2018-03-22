@@ -8,9 +8,10 @@ DEPLOY_FILE_NAMES=$(find struts-app-build-artifacts -name "*.war")
 
 echo "==========================================="
 echo "Deploying: "
+echo "==========================================="
 for i in $DEPLOY_FILE_NAMES
 do
-  echo `basename $i .war` using $i
+  printf "App: %s \t|  using %s" `basename $i .war` $i
 done
 echo "==========================================="
 
