@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 set -e
 
 # usage: fly.sh <target> <pipeline-name>
@@ -52,5 +52,7 @@ then
    exit 1
 fi
 
+
 fly -t $TARGET sp -p $PIPELINE -c pipeline_final.yml -l ${CONFIG_PARAMS// } $@
-  rm pipeline_final.yml
+
+rm pipeline_final.yml
