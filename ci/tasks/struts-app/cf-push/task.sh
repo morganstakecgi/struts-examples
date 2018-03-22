@@ -4,7 +4,7 @@ cd struts-app-build-artifacts
 tar -zxvf *.tar.gz
 cd ..
 
-DEPLOY_FILE_NAMES=$(find struts-app-build-artifacts -name "*.war")
+DEPLOY_FILE_NAMES=$(find struts-app-build-artifacts -name "*.war" | sort )
 
 echo "==========================================="
 echo "Deploying: "
