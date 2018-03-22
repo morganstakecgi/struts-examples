@@ -6,8 +6,8 @@ image_resource:
     repository: cnsadmin/struts-example
     tag: latest
 inputs:
-- name: struts-examples
-- name: struts-app-build-artifacts
+  - name: struts-examples
+  - name: struts-app-build-artifacts
 run:
   path: struts-examples/ci/tasks/struts-app/cf-push/task.sh
 params:
