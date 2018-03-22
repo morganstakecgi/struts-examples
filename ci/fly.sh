@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 set -e
 
 # usage: fly.sh <target> <pipeline-name>
