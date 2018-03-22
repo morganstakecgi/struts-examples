@@ -12,8 +12,8 @@
 #echo "[default]" > ~/.aws/config
 #echo "region = ${AWS_REGION_NAME}" >> ~/.aws/config
 #echo "output = json" >> ~/.aws/config
-mkdir -p build_artifacts
 
+mkdir -p build_artifacts
 cd struts-examples
 mvn package -pl annotations -am
 
@@ -23,6 +23,6 @@ then
   do
 #    echo aws s3 cp $i s3://${S3_BUCKET}/`dirname $i|cut -d'/' -f2`.war
 #    aws s3 cp $i s3://${S3_BUCKET}/`dirname $i|cut -d'/' -f2`.war
-      cp $i build_artifacts/`dirname $i|cut -d'/' -f2`.war
+      cp $i ../build_artifacts/`dirname $i|cut -d'/' -f2`.war
   done
 fi
