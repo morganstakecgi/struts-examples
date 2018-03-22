@@ -2,7 +2,8 @@
 
 mkdir -p build_artifacts
 cd struts-examples
-mvn package -pl annotations -am
+#mvn package -pl annotations -am
+mvn package
 
 if [ $? ]
 then
