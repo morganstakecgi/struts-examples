@@ -15,7 +15,8 @@ echo "output = json" >> ~/.aws/config
 
 
 cd struts-examples
-mvn package
+mvn package -pl annotations -am
+
 if [ $? ]
 then
   for i in `find . -name "*.war"|sort|grep -v test|grep -v mailreader`

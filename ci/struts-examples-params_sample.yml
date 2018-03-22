@@ -1,18 +1,18 @@
 github_private_key: |
   -----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----
-# s3 parameters to store bstruts-appld artifacts
-AWS_REGION_NAME: eu-west-1
+# s3 parameters to store build artifacts
+AWS_REGION_NAME: change-me
 S3_ENDPOINT: change-me
 AWS_ACCESS_KEY: change-me
 AWS_SECRET_KEY: change-me
 S3_BUCKET: change-me
 
 #cf parameters
-CF_API: https://lab04.den.ecsteam.io
-CF_API_USER: admin
-CF_API_PASSWORD: welcome1
-APPS_DOMAIN_NAME: lab04.den.ecsteam.io
+CF_API: change-me
+CF_API_USER: change-me
+CF_API_PASSWORD: change-me
+APPS_DOMAIN_NAME: change-me
 
 # struts-app parameters
 STRUTS_APP_INSTANCE_COUNT: 1
