@@ -49,11 +49,9 @@ jobs:
   serial: true
   max_in_flight: 1
   plan:
-  - aggregate:
-    - get: struts-examples
-    - get: struts-app-build-artifacts
-      trigger: true
-      passed: ['compile-struts-app']
+  - get: struts-app-build-artifacts
+    trigger: true
+    passed: ['compile-struts-app']
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
     attempts: 2
