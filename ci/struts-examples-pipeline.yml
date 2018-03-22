@@ -40,7 +40,7 @@ jobs:
   - task: compile
     file: struts-examples/ci/tasks/struts-app/compile/task.yml
     params:
-      STRUTS_PROJECTS: "((STRUTS_PROJECTS))"
+      STRUTS_PROJECTS: ((STRUTS_PROJECTS))
   - put: struts-app-build-artifacts
     params:
      file: build_artifacts/*.tar.gz
@@ -49,10 +49,11 @@ jobs:
   serial: true
   max_in_flight: 1
   plan:
-  - get: struts-examples
-  - get: struts-app-build-artifacts
-    trigger: true
-    passed: [compile-struts-app]
+  - aggregate:
+    - get: struts-examples
+    - get: struts-app-build-artifacts
+      trigger: true
+      passed: [compile-struts-app]
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
     attempts: 1
