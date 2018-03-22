@@ -8,6 +8,6 @@ image_resource:
 inputs:
 - name: struts-examples
 outputs:
-- name: build_artifacts
+- name: struts-app-build-artifacts
 run:
   path: struts-examples/ci/tasks/struts-app/compile/task.sh

@@ -51,7 +51,7 @@ jobs:
   plan:
   - get: struts-app-build-artifacts
     trigger: true
-    passed: ['compile-struts-app']
+    passed: [compile-struts-app]
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
     attempts: 2
