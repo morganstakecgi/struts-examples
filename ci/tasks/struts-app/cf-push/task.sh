@@ -11,7 +11,7 @@ echo "Deploying: "
 echo "==========================================="
 for i in $DEPLOY_FILE_NAMES
 do
-  printf "App: %s \t|  using %s" `basename $i .war` $i
+  printf "|\t App: %-25s \t|  using %-60s \n" `basename $i .war` $i
 done
 echo "==========================================="
 
