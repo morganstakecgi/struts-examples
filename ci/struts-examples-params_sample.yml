@@ -17,4 +17,4 @@ APPS_DOMAIN_NAME: change-me
 # struts-app parameters
 STRUTS_APP_INSTANCE_COUNT: 1
 STRUTS_APP_NAME: struts-app
-#STRUTS_APP_SERVICES: dev_admin_db,struts-app_cw_logs
+#STRUTS_APP_SERVICES:
