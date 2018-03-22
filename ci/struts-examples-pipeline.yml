@@ -23,7 +23,8 @@ resources:
     region_name: ((AWS_REGION_NAME))
     endpoint: ((S3_ENDPOINT))
     bucket: ((S3_BUCKET))
-    regexp: (.*).tar.gz
+    versioned_file: struts-examples.tar.gz
+#    regexp: (.*).tar.gz
 
 - name: slack-alert
   type: slack-notification
@@ -51,8 +52,8 @@ jobs:
   plan:
   - get: struts-examples
   - get: struts-app-build-artifacts
-    trigger: true
     passed: [compile-struts-app]
+    trigger: true
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
     attempts: 2
