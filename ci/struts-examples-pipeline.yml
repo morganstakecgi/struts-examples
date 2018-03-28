@@ -22,7 +22,7 @@ resources:
     secret_access_key: ((AWS_SECRET_KEY))
     region_name: ((AWS_REGION_NAME))
     endpoint: ((S3_ENDPOINT))
-    bucket: ((S3_BUCKET))
+    bucket: ((S3_CAST_BUCKET))
     versioned_file: struts-examples-cast-analysis.tar.gz
 #    regexp: (.*).tar.gz
 
@@ -63,7 +63,6 @@ jobs:
   max_in_flight: 1
   plan:
   - get: struts-examples
-  - get: struts-app-build-artifacts
     passed: [compile-struts-app]
     trigger: true
   - task: cast-analysis
@@ -78,7 +77,7 @@ jobs:
   plan:
   - get: struts-examples
   - get: struts-app-build-artifacts
-    passed: [cast-analysis-struts-app]
+    passed: [compile-struts-app]
     trigger: true
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
