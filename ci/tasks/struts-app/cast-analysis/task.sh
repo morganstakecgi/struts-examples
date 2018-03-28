@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORK_DIR=`pwd`/struts-app-cast-artifacts
+WORK_DIR=struts-app-cast-artifacts
 TAR_FILE=$WORK_DIR/struts-examples-cast-analysis.tar.gz
 
 mkdir -p $WORK_DIR
