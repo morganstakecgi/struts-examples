@@ -61,6 +61,18 @@ RUN rm cf.tgz
 # Install aws cli
 RUN apt-get install awscli -y
 
+# install CAST Highlight Agent
+ENV CAST_HOME /usr/local/cast
+ENV CAST_WORK ${CAST_HOME}/work
+ENV CAST_AGENT_JAR ${CAST_HOME}/Highlight-Automation-Command/HighlightAutomation.jar
+ENV CAST_AGENT_PERL ${CAST_HOME}/Highlight-Automation-Command/perl
+
+RUN mkdir $CAST_HOME
+RUN mkdir $CAST_HOME/working
+RUN curl -X GET https://casthighlight.com/tools/cli/Highlight-Automation-Command.tar.gz > $CAST_HOME/Highlight-Automation-Command.tar.gz
+RUN cd $CAST_HOME/ && tar -zxvf $CAST_HOME/Highlight-Automation-Command.tar.gz
+RUN cpan JSON
+RUN cpan XML::Twig
 #
 ## Install jmeter for load test
 #ENV JMETER_HOME    /opt/jmeter
