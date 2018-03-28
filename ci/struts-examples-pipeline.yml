@@ -63,6 +63,7 @@ jobs:
   max_in_flight: 1
   plan:
   - get: struts-examples
+  - get: struts-app-build-artifacts
     passed: [compile-struts-app]
     trigger: true
   - task: cast-analysis

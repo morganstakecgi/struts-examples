@@ -94,7 +94,7 @@
     put: slack-alert
     params:
       channel: '@morgan.stake'
-      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed :white_circle:"
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed :red_circle:"
 - type: replace
   path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_abort?
   value:
