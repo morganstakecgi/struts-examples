@@ -14,6 +14,18 @@ resources:
     private_key: ((github_private_key))
 
 # s3 for struts-apps
+- name: struts-app-cast-artifacts
+  type: s3
+  source:
+    disable_ssl: false
+    access_key_id: ((AWS_ACCESS_KEY))
+    secret_access_key: ((AWS_SECRET_KEY))
+    region_name: ((AWS_REGION_NAME))
+    endpoint: ((S3_ENDPOINT))
+    bucket: ((S3_BUCKET))
+    versioned_file: struts-examples-cast-analysis.tar.gz
+#    regexp: (.*).tar.gz
+
 - name: struts-app-build-artifacts
   type: s3
   source:
@@ -56,6 +68,9 @@ jobs:
     trigger: true
   - task: cast-analysis
     file: struts-examples/ci/tasks/struts-app/cast-analysis/task.yml
+  - put: struts-app-cast-artifacts
+    params:
+     file: struts-app-cast-artifacts/struts-examples-cast-analysis.tar.gz
 
 - name: cf-push-struts-app
   serial: true
