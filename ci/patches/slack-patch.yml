@@ -79,3 +79,33 @@
     params:
       channel: '@morgan.stake'
       text: Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME successful
+
+# Add alert to struts app cast-analysis job
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/get=struts-examples:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME started  :smile_cat:"
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME failed :white_circle:"
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME aborted :white_circle:"
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME successful  :hammer_time:"

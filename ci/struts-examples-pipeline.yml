@@ -46,7 +46,7 @@ jobs:
     params:
      file: struts-app-build-artifacts/*.tar.gz
 
-- name: cf-cast-struts-app
+- name: cast-analysis-struts-app
   serial: true
   max_in_flight: 1
   plan:
@@ -54,7 +54,7 @@ jobs:
   - get: struts-app-build-artifacts
     passed: [compile-struts-app]
     trigger: true
-  - task: cf-push
+  - task: cast-analysis
     file: struts-examples/ci/tasks/struts-app/cast-analysis/task.yml
 
 - name: cf-push-struts-app
@@ -63,7 +63,7 @@ jobs:
   plan:
   - get: struts-examples
   - get: struts-app-build-artifacts
-    passed: [cf-cast-struts-app]
+    passed: [cast-analysis-struts-app]
     trigger: true
   - task: cf-push
     file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
