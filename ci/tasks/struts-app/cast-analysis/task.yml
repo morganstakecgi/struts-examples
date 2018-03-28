@@ -8,6 +8,6 @@ image_resource:
 inputs:
 - name: struts-examples
 outputs:
-- name: struts-app-build-artifacts
+- name: struts-app-cast-artifacts
 run:
   path: struts-examples/ci/tasks/struts-app/cast-analysis/task.sh
