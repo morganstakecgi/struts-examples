@@ -78,7 +78,7 @@
     put: slack-alert
     params:
       channel: '@morgan.stake'
-      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cf-push aborted  :red_circle:"
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cf-push successful :green_heart:"
 
 # Add alert to struts app cast-analysis job
 - type: replace
