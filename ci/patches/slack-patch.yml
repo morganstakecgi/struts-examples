@@ -1,0 +1,111 @@
+
+# add slack alert to struts app jobs
+# Add alert to struts app compile job
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/get=struts-examples:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, get=struts-examples started   :smiling_imp:"
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/task=compile/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=compile failed :red_circle:"
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/task=compile/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=compile aborted :white_circle:"
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/task=compile/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=compile successful :green_heart:"
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/put=struts-app-build-artifacts/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, put=struts-app-build-artifacts  failed :red_circle:"
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/put=struts-app-build-artifacts/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, put=struts-app-build-artifacts  aborted :white_circle:"
+- type: replace
+  path: /jobs/name=compile-struts-app/plan/put=struts-app-build-artifacts/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, put=struts-app-build-artifacts successful :green_heart:"
+# Add alert to struts app cf push job
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/get=struts-examples:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, get=struts-examples started    "
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/task=cf-push/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cf-push failed :red_circle:"
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/task=cf-push/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cf-push aborted :white_circle:"
+- type: replace
+  path: /jobs/name=cf-push-struts-app/plan/task=cf-push/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cf-push successful :green_heart:"
+
+# Add alert to struts app cast-analysis job
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/get=struts-examples:before
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME started  :smile_cat:"
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_failure?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cast-analysis failed :red_circle:"
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_abort?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cast-analysis aborted :white_circle:"
+- type: replace
+  path: /jobs/name=cast-analysis-struts-app/plan/task=cast-analysis/on_success?
+  value:
+    put: slack-alert
+    params:
+      channel: '@morgan.stake'
+      text: "Dev - Build No. $BUILD_NAME - $BUILD_JOB_NAME, task=cast-analysis successful  :hammer_time:"

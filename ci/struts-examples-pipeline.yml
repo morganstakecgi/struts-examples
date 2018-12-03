@@ -1,0 +1,93 @@
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+
+resources:
+# source code for the pipeline scripts
+- name: struts-examples
+  type: git
+  source:
+    uri: https://github.com/morganstakecgi/struts-examples.git
+    private_key: ((github_private_key))
+
+# s3 for struts-apps
+- name: struts-app-cast-artifacts
+  type: s3
+  source:
+    disable_ssl: false
+    access_key_id: ((AWS_ACCESS_KEY))
+    secret_access_key: ((AWS_SECRET_KEY))
+    region_name: ((AWS_REGION_NAME))
+    endpoint: ((S3_ENDPOINT))
+    bucket: ((S3_CAST_BUCKET))
+    versioned_file: struts-examples-cast-analysis.tar.gz
+#    regexp: (.*).tar.gz
+
+- name: struts-app-build-artifacts
+  type: s3
+  source:
+    disable_ssl: false
+    access_key_id: ((AWS_ACCESS_KEY))
+    secret_access_key: ((AWS_SECRET_KEY))
+    region_name: ((AWS_REGION_NAME))
+    endpoint: ((S3_ENDPOINT))
+    bucket: ((S3_BUCKET))
+    versioned_file: struts-examples.tar.gz
+#    regexp: (.*).tar.gz
+
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/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
+
+jobs:
+# struts-app app pipeline
+- name: compile-struts-app
+  max_in_flight: 1
+  plan:
+  - get: struts-examples
+    trigger: true
+  - task: compile
+    file: struts-examples/ci/tasks/struts-app/compile/task.yml
+    params:
+      STRUTS_PROJECTS: ((STRUTS_PROJECTS))
+  - put: struts-app-build-artifacts
+    params:
+     file: struts-app-build-artifacts/*.tar.gz
+
+- name: cast-analysis-struts-app
+  serial: true
+  max_in_flight: 1
+  plan:
+  - get: struts-examples
+  - get: struts-app-build-artifacts
+    passed: [compile-struts-app]
+    trigger: true
+  - task: cast-analysis
+    file: struts-examples/ci/tasks/struts-app/cast-analysis/task.yml
+  - put: struts-app-cast-artifacts
+    params:
+     file: struts-app-cast-artifacts/struts-examples-cast-analysis.tar.gz
+
+- name: cf-push-struts-app
+  serial: true
+  max_in_flight: 1
+  plan:
+  - get: struts-examples
+  - get: struts-app-build-artifacts
+    passed: [compile-struts-app]
+    trigger: true
+  - task: cf-push
+    file: struts-examples/ci/tasks/struts-app/cf-push/task.yml
+    attempts: 2
+    params:
+      CF_API: ((CF_API))
+      CF_API_USER: ((CF_API_USER))
+      CF_API_PASSWORD: ((CF_API_PASSWORD))
+      CF_ORG: ((CF_ORG))
+      CF_SPACE: ((CF_SPACE))
+
+

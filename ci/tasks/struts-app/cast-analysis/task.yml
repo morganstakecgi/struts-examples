@@ -1,0 +1,13 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: cnsadmin/struts-example
+    tag: latest
+inputs:
+- name: struts-examples
+outputs:
+- name: struts-app-cast-artifacts
+run:
+  path: struts-examples/ci/tasks/struts-app/cast-analysis/task.sh

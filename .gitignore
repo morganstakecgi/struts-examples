@@ -1,0 +1,25 @@
+# IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Netbeans
+nb-configuration.xml
+
+# OSX
+.DS_Store
+
+# Scripts
+
+# Maven
+target
+
+.java-version
+
+morgan-params.yml
